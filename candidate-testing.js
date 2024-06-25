@@ -56,8 +56,16 @@ function gradeQuiz(candidateAnswers) {
 //   console.log("Your answer was incorrect.");
 // }
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
+  let grade = 0;  //TODO 3.2 use this variable to calculate the candidates score.
+  
+  for (let i = 0; i < questions.length; i++) {
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+      grade += 1;
+    } 
+  }
+  grade = (grade/correctAnswers.length)*100;
+  console.log("Your score is: ")
+  console.log(`${grade} out of 100`);
 
   return grade;
 }
