@@ -31,6 +31,7 @@ let candidateAnswers = [];
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
   console.log("");
+  console.log("---------------------------------------------------------------------------------");
   console.log("Welcome to the Candidate Testing Portal.");
   console.log("");
   candidateName = input.question("Please enter your name: ");
@@ -78,8 +79,11 @@ let numCorrect = 0;
   if (grade >= 60) {
     console.log(">>>Congratulations. You have PASSED the test.<<<");
     console.log("");
+    console.log("---------------------------------------------------------------------------------");
   } else {
     console.log(">>>You did not receive a passing grade. Please try again.<<<");
+    console.log("");
+    console.log("---------------------------------------------------------------------------------");
   }
   
   return grade;
@@ -97,7 +101,7 @@ function runProgram() {
   candidatePrepared = input.question("Are you ready to begin the test? ");
   if (candidatePrepared.toLowerCase() === "yes" || candidatePrepared.toLowerCase() === "y") {
     console.log("");
-    console.log("Good luck!");
+    console.log("Initiating test. Good luck!");
     console.log("");
   } else {
     console.log("");
