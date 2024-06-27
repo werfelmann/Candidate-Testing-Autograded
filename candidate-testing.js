@@ -4,6 +4,7 @@ const input = require('readline-sync');
 
 // TODO 1.1a: Define candidateName // 
 let candidateName = "";
+let candidatePrepared = "";
 
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
 let question = "Who was the first American woman in space? ";
@@ -29,7 +30,11 @@ let candidateAnswers = [];
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-  candidateName = input.question("What is your name?");
+  console.log("");
+  console.log("Welcome to the Candidate Testing Portal.");
+  console.log("");
+  candidateName = input.question("Please enter your name: ");
+  console.log("");
 }
 
 function askQuestion() {
@@ -39,9 +44,11 @@ function askQuestion() {
   for (let i = 0; i < questions.length; i++) {
     candidateAnswers[i] = input.question(questions[i]);
     if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
-      console.log(`Your answer (${candidateAnswers[i]}) is correct!`);
+      console.log("Your answer is correct!");
+      console.log("");
     } else {
-      console.log(`Your answer (${candidateAnswers[i]}) is incorrect.`);
+      console.log("Your answer is incorrect.");
+      console.log("");
     }
   }
 }
@@ -56,25 +63,73 @@ function gradeQuiz(candidateAnswers) {
 //   console.log("Your answer was incorrect.");
 // }
 
-  let grade = 0;  //TODO 3.2 use this variable to calculate the candidates score.
   
+let grade = 0;  //TODO 3.2 use this variable to calculate the candidates score.
+let numCorrect = 0;
+
   for (let i = 0; i < questions.length; i++) {
     if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
-      grade += 1;
+      numCorrect += 1;
     } 
   }
-  grade = (grade/correctAnswers.length)*100;
-  console.log("Your score is: ")
-  console.log(`${grade} out of 100`);
-
+  grade = (numCorrect/correctAnswers.length)*100;
+  console.log(`>>> Overall Grade: ${grade}% (${numCorrect} of ${questions.length} responses were correct) <<<`);
+  console.log("");
+  if (grade >= 60) {
+    console.log(">>>Congratulations. You have PASSED the test.<<<");
+    console.log("");
+  } else {
+    console.log(">>>You did not receive a passing grade. Please try again.<<<");
+  }
+  
   return grade;
 }
 
 function runProgram() {
   askForName();
   // TODO 1.1c: Greet candidate using their name //
-  console.log("Greetings, " + candidateName + ".");
+  console.log("Greetings, " + candidateName + ". ");
+  console.log("");
+  console.log("You will be asked a series of questions."); 
+  console.log("Each question is worth 20 points."); 
+  console.log("In order to pass the test, you must earn a score of 60% or above.");
+  console.log("");
+  candidatePrepared = input.question("Are you ready to begin the test? ");
+  if (candidatePrepared.toLowerCase() === "yes" || candidatePrepared.toLowerCase() === "y") {
+    console.log("");
+    console.log("Good luck!");
+    console.log("");
+  } else {
+    console.log("");
+    console.log("Trick question! Of course you are ready. Initiating test.")
+    console.log("");
+  }
+  
   askQuestion();
+  console.log("");
+  console.log("Test complete. Here are the results:");
+  console.log("");
+  console.log(`Candidate Name: ${candidateName}`);
+  console.log(`1) ${question}`);
+  console.log(`Your Answer: ${candidateAnswers[0]}`);
+  console.log(`Correct Answer: ${correctAnswer}`);
+  console.log("");
+  console.log(`2) ${question2}`);
+  console.log(`Your Answer: ${candidateAnswers[1]}`);
+  console.log(`Correct Answer: ${correctAnswer2}`);
+  console.log("");
+  console.log(`3) ${question3}`);
+  console.log(`Your Answer: ${candidateAnswers[2]}`);
+  console.log(`Correct Answer: ${correctAnswer3}`);
+  console.log("");
+  console.log(`4) ${question4}`);
+  console.log(`Your Answer: ${candidateAnswers[3]}`);
+  console.log(`Correct Answer: ${correctAnswer4}`);
+  console.log("");
+  console.log(`5) ${question5}`);
+  console.log(`Your Answer: ${candidateAnswers[4]}`);
+  console.log(`Correct Answer: ${correctAnswer5}`);
+  console.log("");
   gradeQuiz(this.candidateAnswers);
 }
 
