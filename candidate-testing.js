@@ -76,7 +76,7 @@ let numCorrect = 0;
   grade = (numCorrect/correctAnswers.length)*100;
   console.log(`>>> Overall Grade: ${grade}% (${numCorrect} of ${questions.length} responses were correct) <<<`);
   console.log("");
-  if (grade >= 60) {
+  if (grade >= 80) {
     console.log(">>>Congratulations. You have PASSED the test.<<<");
     console.log("");
     console.log("---------------------------------------------------------------------------------");
@@ -96,7 +96,7 @@ function runProgram() {
   console.log("");
   console.log("You will be asked a series of questions."); 
   console.log("Each question is worth 20 points."); 
-  console.log("In order to pass the test, you must earn a score of 60% or above.");
+  console.log("In order to pass the test, you must earn a score of 80% or above.");
   console.log("");
   candidatePrepared = input.question("Are you ready to begin the test? ");
   if (candidatePrepared.toLowerCase() === "yes" || candidatePrepared.toLowerCase() === "y") {
